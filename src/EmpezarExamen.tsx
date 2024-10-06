@@ -8,35 +8,33 @@ const EmpezarExamen = () => {
     // Datos en duro que deseas enviar
     const data = {
       formUrl: "http://localhost:5174/formulario",
-      descripcion: "Examen Guarani",
+      descripcion: "Examen Griego",
       estado: "pendiente",
-      nombre: "Tobias Jara",
-      cedula: "12345678",
-      email: "tobias.jara.404@gmail.com",
+      nombre: "Goku",
+      cedula: "11111111",
+      email: "goku1@gmail.com",
       rol: "EST",
-      idFormulario: 12,
-      idUsuario: 11,
+      idFormulario: 27,
+      idUsuario: 35,
     };
 
     try {
       // Realizar la petición POST al backend en localhost:3000
-      const response = await fetch(
-        "http://localhost:3000/api/createStudentAndExam",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/startExam", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
       if (response.ok) {
+        const result = await response.json();
         console.log("Formulario enviado correctamente");
-        // Redireccionar manualmente a Front 2 (http://localhost:5173/)
-        window.location.href = "http://localhost:5173/";
+        window.location.href = result.redirectUrl;
       } else {
-        console.error("Error al enviar el formulario");
+        const errorResponse = await response.json();
+        console.error("Error al enviar el formulario:", errorResponse.errors);
       }
     } catch (error) {
       console.error("Error en la petición:", error);
