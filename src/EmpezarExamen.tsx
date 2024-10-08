@@ -8,14 +8,14 @@ const EmpezarExamen = () => {
     // Datos en duro que deseas enviar
     const data = {
       formUrl: "http://localhost:5174/formulario",
-      descripcion: "Examen Griego",
+      descripcion: "Examen Agricultura",
       estado: "pendiente",
-      nombre: "Goku",
-      cedula: "11111111",
-      email: "goku1@gmail.com",
+      nombre: "Joker",
+      cedula: "666111",
+      email: "joker666@gmail.com",
       rol: "EST",
-      idFormulario: 27,
-      idUsuario: 35,
+      idFormulario: 78,
+      idUsuario: 90,
     };
 
     try {
